@@ -17,6 +17,3 @@ deploy:
   env: 'Dockernodejs-env'
   bucket_name: 'elasticbeanstalk-ca-central-1-345755324932'
   bucket_path: 'Docker_nodejs'
-  on:
-    branch: main
-
