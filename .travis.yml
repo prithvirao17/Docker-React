@@ -5,7 +5,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t nodejsapp -f Dockerfile.dev .
+  - docker build -t stephengrider/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true nodejsapp npm run test
+  - docker run -e CI=true stephengrider/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'ca-central-1'
+  app: 'Docker_nodejs'
+  env: 'Dockernodejs-env'
+  bucket_name: 'elasticbeanstalk-ca-central-1-345755324932'
+  bucket_path: 'Docker_nodejs'
+  on:
+    branch: main
+
